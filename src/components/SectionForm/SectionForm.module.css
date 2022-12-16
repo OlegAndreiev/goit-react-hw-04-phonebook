@@ -1,0 +1,52 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.section h2 {
+  margin-bottom: 20px;
+  font-size: xx-large;
+}
+
+.form {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.formLabel {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.labelInput {
+  margin-top: 5px;
+  height: 20px;
+  font-size: 16px;
+}
+
+.formButton {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.formButton:hover {
+  background-color: rgba(0, 255, 255, 0.26);
+}
+.formButton:active {
+  background-color: aqua;
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 3px -2px,
+    rgb(0 0 0 / 14%) 0px 3px 4px 0px, rgb(0 0 0 / 12%) 0px 1px 8px 0px;
+}
