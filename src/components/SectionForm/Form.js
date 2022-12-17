@@ -22,16 +22,14 @@ export default function Form({ onSubmit }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-
     onSubmit({ id, name, number });
     reset();
   };
 
   const reset = () => {
-    setId();
-    setName();
-    setNumber();
-    // setContacts();
+    setId('');
+    setName('');
+    setNumber('');
   };
 
   return (
@@ -139,6 +137,6 @@ export default function Form({ onSubmit }) {
 // }
 // export default Form;
 
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// Form.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };
