@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from './SectionForm/Form';
 import SectionForm from './SectionForm/SectionForm';
@@ -7,6 +7,8 @@ import ContactList from './SectionContacts/ContactsList';
 import Filter from './SectionContacts/Filter';
 
 export default function App() {
+  const localContacts = localStorage.getItem('contacts');
+  const parsedContacts = JSON.parse(localContacts);
   const [contacts, setContacts] = useState(() => []);
   const [filter, setFilter] = useState(() => '');
 
@@ -40,6 +42,23 @@ export default function App() {
   const deleteContact = toDeleteId => {
     setContacts(contacts.filter(contact => contact.id !== toDeleteId));
   };
+
+  useEffect(() => {
+    if (contacts.length === 0) {
+      console.log('ok');
+      setContacts(parsedContacts);
+    }
+  }, []);
+
+  useEffect(() => {
+    // const localContacts = localStorage.getItem('contacts');
+    // const parsedContacts = JSON.parse(localContacts);
+    // console.log(parsedContacts);
+    // localContacts;
+    // contacts === [] &&
+    //   setContacts(JSON.parse(localStorage.getItem('contacts')));
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
 
   return (
     <div
