@@ -43,20 +43,17 @@ export default function App() {
     setContacts(contacts.filter(contact => contact.id !== toDeleteId));
   };
 
-  useEffect(() => {
-    if (contacts.length === 0) {
-      console.log('ok');
+  const localContactsCheck = () => {
+    if (parsedContacts !== null) {
       setContacts(parsedContacts);
     }
+  };
+
+  useEffect(() => {
+    localContactsCheck();
   }, []);
 
   useEffect(() => {
-    // const localContacts = localStorage.getItem('contacts');
-    // const parsedContacts = JSON.parse(localContacts);
-    // console.log(parsedContacts);
-    // localContacts;
-    // contacts === [] &&
-    //   setContacts(JSON.parse(localStorage.getItem('contacts')));
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
