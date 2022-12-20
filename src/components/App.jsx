@@ -6,11 +6,11 @@ import ContactList from './SectionContacts/ContactsList';
 import Filter from './SectionContacts/Filter';
 
 export default function App() {
-  const localContacts = localStorage.getItem('contacts');
-  const parsedContacts = JSON.parse(localContacts);
-  const [contacts, setContacts] = useState(() => []);
+  // const localContacts = localStorage.getItem('contacts');
+  // const parsedContacts = JSON.parse(localContacts);
+  const [contacts, setContacts] = useState(() =>JSON.parse(localStorage.getItem('contacts')) ?? []);
   const [filter, setFilter] = useState(() => '');
-
+console.log(contacts);
   const formSubmitHandler = data => {
     const { id, name, number } = data;
 
@@ -42,16 +42,16 @@ export default function App() {
     setContacts(contacts.filter(contact => contact.id !== toDeleteId));
   };
 
-  const localContactsCheck = () => {
-    if (parsedContacts !== null) {
-      setContacts(parsedContacts);
-    }
-  };
+  // const localContactsCheck = () => {
+  //   if (parsedContacts !== null) {
+  //     setContacts(parsedContacts);
+  //   }
+  // };
 
-  useEffect(() => {
-    localContactsCheck();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   localContactsCheck();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem('contacts', JSON.stringify(contacts));
